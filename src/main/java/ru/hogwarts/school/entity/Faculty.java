@@ -1,8 +1,16 @@
-package ru.hogwarts.school.model;
+package ru.hogwarts.school.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Faculty {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
 
@@ -11,7 +19,7 @@ public class Faculty {
     public Faculty() {
     }
 
-    public Faculty(long id, String name, String color) {
+    public Faculty(Long id, String name, String color) {
         this.id = id;
         this.name = name;
         this.color = color;
@@ -21,7 +29,7 @@ public class Faculty {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
