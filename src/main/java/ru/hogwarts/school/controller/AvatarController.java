@@ -1,16 +1,24 @@
 package ru.hogwarts.school.controller;
 
+import jakarta.validation.constraints.Min;
 import org.springframework.data.util.Pair;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import ru.hogwarts.school.dto.AvatarDto;
 import ru.hogwarts.school.service.AvatarService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/avatars")
+@RequestMapping(AvatarController.BASE_URI)
+@Validated
 public class AvatarController {
+
+    public static final String BASE_URI = "/avatars";
 
     private final AvatarService avatarService;
 
@@ -31,6 +39,12 @@ public class AvatarController {
     @GetMapping("/from-fs")
     public ResponseEntity<byte[]> getAvatarFromFs(@RequestParam long studentId) {
         return transform(avatarService.getAvatarFromFs(studentId));
+    }
+
+    @GetMapping
+    public List<AvatarDto> getAvatars(@RequestParam @Min(value = 1, message = "Минимальный номер страницы = 1") int page,
+                                      @RequestParam @Min(value = 1, message = "Минимальный размер страницы = 1") int size) {
+        return avatarService.getAvatars(page, size);
     }
 
     private ResponseEntity<byte[]> transform(Pair<byte[], String> pair) {
