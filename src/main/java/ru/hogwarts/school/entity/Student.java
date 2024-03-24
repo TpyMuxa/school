@@ -18,7 +18,7 @@ public class Student {
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
