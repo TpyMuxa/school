@@ -60,17 +60,17 @@ public class FacultyService {
     }
 
     public List<Faculty> findByColor(String color) {
-        logger.info("Was invoked method findByColor class FacultyService");
+        logger.info("Was invoked method findByColor");
         return facultyRepository.findByColor(color);
     }
 
     public List<Faculty> findNameOrColor(String colorOrName) {
-        logger.info("Was invoked method findNameOrColor class FacultyService");
+        logger.info("Was invoked method findNameOrColor");
         return facultyRepository.findByColorIgnoreCaseOrNameIgnoreCase(colorOrName, colorOrName);
     }
 
     public List<Student> findStudents(long id) {
-        logger.info("Was invoked method findStudents class FacultyService");
+        logger.info("Was invoked method findStudents");
         Faculty faculty = get(id);
         return studentRepository.findByFaculty_Id(faculty.getId());
     }

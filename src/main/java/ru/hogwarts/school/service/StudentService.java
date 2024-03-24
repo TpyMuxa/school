@@ -63,22 +63,22 @@ public class StudentService {
     }
 
     public List<Student> findByAge(int age) {
-        logger.info("Was invoked method findByAge class StudentService");
+        logger.info("Was invoked method findByAge");
         return studentRepository.findByAge(age);
     }
 
     public List<Student> findByAgeBetween(int minAge, int maxAge) {
-        logger.info("Was invoked method findByAgeBetween class StudentService");
+        logger.info("Was invoked method findByAgeBetween");
         return studentRepository.findByAgeBetween(minAge, maxAge);
     }
 
     public Faculty findFaculty(long id) {
-        logger.info("Was invoked method findFaculty class StudentService");
+        logger.info("Was invoked method findFaculty");
         return get(id).getFaculty();
     }
 
     private void fillFaculty(Faculty faculty, Student student) {
-        logger.info("Was invoked method fillFaculty class StudentService");
+        logger.info("Was invoked method fillFaculty");
         if (faculty != null && faculty.getId() != null) {
             Faculty facultyFromDb = facultyRepository.findById(faculty.getId())
                     .orElseThrow(() -> new FacultyNotFoundException(faculty.getId()));
@@ -87,17 +87,17 @@ public class StudentService {
     }
 
     public int getCountOfStudents() {
-        logger.info("Was invoked method getCountOfStudents class StudentService");
+        logger.info("Was invoked method getCountOfStudents");
         return studentRepository.getCountOfStudents();
     }
 
     public double getAverageAgeOfStudents() {
-        logger.info("Was invoked method getAverageAgeOfStudents class StudentService");
+        logger.info("Was invoked method getAverageAgeOfStudents");
         return studentRepository.getAverageAgeOfStudents();
     }
 
     public List<Student> getLastNStudents(int count) {
-        logger.info("Was invoked method getLastNStudents class StudentService");
+        logger.info("Was invoked method getLastNStudents");
         return studentRepository.getLastNStudents(count);
     }
 }

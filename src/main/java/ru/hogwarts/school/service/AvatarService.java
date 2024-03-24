@@ -58,7 +58,7 @@ public class AvatarService {
     }
 
     public void uploadAvatar(long studentId, MultipartFile image) {
-        logger.info("Was invoked method uploadAvatar class AvatarService");
+        logger.info("Was invoked method uploadAvatar");
         try {
             Student student = studentRepository.findById(studentId)
                     .orElseThrow(() -> new StudentNotFoundException(studentId));
@@ -84,14 +84,14 @@ public class AvatarService {
     }
 
     public Pair<byte[], String> getAvatarFromDb(long studentId) {
-        logger.info("Was invoked method getAvatarFromDb class AvatarService");
+        logger.info("Was invoked method getAvatarFromDb");
         Avatar avatar = avatarRepository.findByStudent_Id(studentId)
                 .orElseThrow(() -> new AvatarNotFoundException(studentId));
         return Pair.of(avatar.getData(), avatar.getMediaType());
     }
 
     public Pair<byte[], String> getAvatarFromFs(long studentId) {
-        logger.info("Was invoked method getAvatarFromFs class AvatarService");
+        logger.info("Was invoked method getAvatarFromFs");
         try {
             Avatar avatar = avatarRepository.findByStudent_Id(studentId)
                     .orElseThrow(() -> new AvatarNotFoundException(studentId));
@@ -104,7 +104,7 @@ public class AvatarService {
     }
 
     public List<AvatarDto> getAvatars(int page, int size) {
-        logger.info("Was invoked method getAvatars class AvatarService");
+        logger.info("Was invoked method getAvatars");
         return avatarRepository.findAll(PageRequest.of(page - 1, size)).get()
                 .map(avatarMapper::toDto)
                 .collect(Collectors.toList());

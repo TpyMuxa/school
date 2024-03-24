@@ -17,7 +17,7 @@ public class InfoService {
     }
 
     public int getPort() {
-        logger.info("Was invoked method getPort class InfoService");
+        logger.info("Was invoked method getPort");
         return port;
     }
 }
