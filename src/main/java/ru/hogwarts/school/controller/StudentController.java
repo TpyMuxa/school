@@ -69,4 +69,9 @@ public class StudentController {
     public List<Student> getLastNStudents(@RequestParam int count){
         return studentService.getLastNStudents(count);
     }
+
+    @GetMapping("/names")
+    public List<String> getNameOfStudentsWhichStartsWith(@RequestParam char startsWith){
+        return studentService.getNameOfStudentsWhichStartsWith(startsWith);
+    }
 }

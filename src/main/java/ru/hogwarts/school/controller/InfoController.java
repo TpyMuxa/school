@@ -1,9 +1,11 @@
 package ru.hogwarts.school.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.hogwarts.school.service.InfoService;
 
+@RequestMapping("/info")
 @RestController
 public class InfoController {
 
@@ -13,8 +15,14 @@ public class InfoController {
         this.infoService = infoService;
     }
 
-    @GetMapping("/info/port")
+    @GetMapping("/port")
     public int getPort() {
+
         return infoService.getPort();
+    }
+
+    @GetMapping("/step-4")
+    public void step4() {
+        infoService.step4();
     }
 }
