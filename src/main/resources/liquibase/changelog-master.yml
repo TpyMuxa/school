@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: course-four-lesson-three.sql
+      relativeToChangelogFile: true

@@ -54,4 +54,34 @@ public class StudentController {
 
         return studentService.findFaculty(id);
     }
+
+    @GetMapping("/count")
+    public int getCountOfStudents() {
+        return studentService.getCountOfStudents();
+    }
+
+    @GetMapping("/average-age")
+    public double getAverageAgeOfStudents() {
+        return studentService.getAverageAgeOfStudents();
+    }
+
+    @GetMapping("/last")
+    public List<Student> getLastNStudents(@RequestParam int count) {
+        return studentService.getLastNStudents(count);
+    }
+
+    @GetMapping("/names")
+    public List<String> getNameOfStudentsWhichStartsWith(@RequestParam char startsWith) {
+        return studentService.getNameOfStudentsWhichStartsWith(startsWith);
+    }
+
+    @GetMapping("/print-parallel")
+    public void printParallel() {
+        studentService.printParallel();
+    }
+
+    @GetMapping("/print-synchronized")
+    public void printSynchronized() {
+        studentService.printSynchronized();
+    }
 }
